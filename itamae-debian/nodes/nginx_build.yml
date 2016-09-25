@@ -1,0 +1,11 @@
+nginx_build:
+  build_user: app
+  platform: linux
+  version: 0.9.8
+  bin: /usr/local/bin/
+  nginx_version: 1.11.4
+  nginx_user: nginx
+  nginx_group: nginx
+  nginx_sbin: /usr/sbin/nginx
+  nginx_conf: /etc/nginx/nginx.conf
+  nginx_pid: /var/run/nginx.pid

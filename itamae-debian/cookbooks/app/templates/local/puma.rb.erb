@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+require 'yaml'
+
+def puma
+  conf = YAML.load_file("<%= @project_directory %>/app/shared/config/settings.local.yml")
+  conf['puma']
+end
+
+workers puma['workers']
+threads_count = puma['threads']
+threads threads_count, threads_count
+
+bind "unix://<%= @project_directory %>/app/shared/tmp/sockets/puma.sock"
+
+directory "<%= @project_directory %>/app/current"
+
+rackup DefaultRackup
+port 3000
+worker_timeout puma['worker_timeout']
+pidfile File.expand_path('tmp/pids/puma.pid')
+state_path File.expand_path('tmp/pids/puma.state')
+stdout_redirect File.expand_path('log/puma_access.log'), File.expand_path('log/puma_error.log'), true
+
+environment ENV['RAILS_ENV']
+
+prune_bundler
+on_restart do
+  ENV['BUNDLE_GEMFILE'] = "<%= @project_directory %>/app/current/Gemfile"
+end
+
+plugin :tmp_restart

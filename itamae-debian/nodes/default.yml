@@ -1,0 +1,7 @@
+server:
+  name: app
+project:
+  name: app
+  user: app
+  directory: '/usr/local/app'
+  server_name: 'example.com'

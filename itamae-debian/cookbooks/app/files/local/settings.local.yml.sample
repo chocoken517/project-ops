@@ -1,0 +1,10 @@
+db:
+  name: project_name
+  host: localhost:27017
+
+secret_key_base: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+puma:
+  workers: 2
+  threads: 2
+  worker_timeout: 60

@@ -1,0 +1,10 @@
+rbenv:
+  global: 2.3.1
+  versions:
+    - 2.3.1
+  cache: true
+
+rbenv-default-gems:
+  default-gems:
+    - bundler
+  install: true
